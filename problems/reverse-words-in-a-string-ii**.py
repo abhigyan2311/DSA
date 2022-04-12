@@ -16,7 +16,7 @@ class Solution:
                 end += 1
             self.reverse(l, start, end - 1)
             start = end + 1
-            end += 1
+            end = start
     def reverseWords(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.

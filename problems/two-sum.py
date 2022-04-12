@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/two-sum/
+
 from typing import List
 
 class Solution:
@@ -17,7 +19,7 @@ class Solution:
         #     if complement in hashmap and hashmap[complement] != i:
         #         return [i, hashmap[complement]]
 
-        # One Pass Hash Map
+        # One Pass Hash Map - O(n), O(n)
         hashmap = {}
         for i in range(len(nums)):
             complement = target - nums[i]

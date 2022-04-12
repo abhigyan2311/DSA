@@ -11,7 +11,7 @@ class Solution:
         while left <= right and s[left] == " ":
             left+=1 
         # Remove trailing spaces
-        while left <= right and s[right] == " ":
+        while left <= right and s[right] == "  ":
             right+=1
         
         d, word = deque(), []

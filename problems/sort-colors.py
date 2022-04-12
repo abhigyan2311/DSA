@@ -1,3 +1,6 @@
+# https://youtu.be/oaVa-9wmpns
+# https://leetcode.com/problems/sort-colors/
+
 from typing import List
 
 class Solution:

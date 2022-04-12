@@ -1,4 +1,5 @@
 # https://www.youtube.com/watch?v=1uu3g_uu8O0&ab_channel=Pepcoding
+# https://leetcode.com/problems/search-in-rotated-sorted-array/
 
 from typing import List
 
@@ -21,7 +22,7 @@ class Solution:
                 if (target > nums[mid] and target <= nums[right]):
                     left = mid + 1
                 else:
-                    right = right - 1
+                    right = mid - 1
         return -1
 
 

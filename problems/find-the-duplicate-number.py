@@ -1,5 +1,10 @@
-from typing import List
+# https://leetcode.com/problems/find-the-duplicate-number/
+# https://www.youtube.com/watch?v=wjYnzkAhcNk&ab_channel=NeetCode
+# https://www.youtube.com/watch?v=32Ll35mhWg0&ab_channel=takeUforward
+# https://youtu.be/oVa8DfUDKTw
 
+
+from typing import List
 
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:

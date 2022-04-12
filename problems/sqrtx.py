@@ -1,6 +1,8 @@
+# https://leetcode.com/problems/sqrtx/
+
 class Solution:
     def mySqrt(self, x: int) -> int:
-        # Binary Search
+        # Binary Search - O(log n)
         if x < 2:
             return x
 
@@ -23,7 +25,26 @@ class Solution:
         # while r*r > x:
         #     r = (r + x//r) // 2
         # return r
+    
+    def nthRoot(self, x: int, n: int) -> int:
+        # Binary Search
+        if x < 2:
+            return x
+
+        left, right = 2, x//n
+        while left <= right:
+            pivot = (left + right)//2
+            num = 1
+            for _ in range(n):
+                num = num * pivot
+            if num > x:
+                right = pivot - 1
+            elif num < x:
+                left = pivot + 1
+            else:
+                return pivot
+        return right
 
 
-answer = Solution().mySqrt(25)
+answer = Solution().mySqrt(27)
 print(answer)

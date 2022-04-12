@@ -43,7 +43,5 @@ def rotateArray(nums: List[int], k: int) -> List[int]:
     reverseInplace(nums, k, n-1)
     return nums
     
-    
-
 ans = rotateArray([1,2,3,4,5,6,7], 3)
 print(ans)
