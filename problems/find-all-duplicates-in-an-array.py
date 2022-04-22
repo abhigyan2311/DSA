@@ -3,17 +3,7 @@ from typing import List
 
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        # Dictionary
-        # freqMap = {}
-        # for num in nums:
-        #     if num in freqMap.keys():
-        #         freqMap[num] += 1
-        #     else:
-        #         freqMap[num] = 1
-        # ans = [k for k,v in freqMap.items() if v == 2]
-        # return ans
-
-        # Sets
+        # Hashmap/Sets - O(n), O(n)
         # seen = set()
         # ans = []
         # for num in nums:

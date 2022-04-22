@@ -54,7 +54,7 @@ class Solution:
         #         r += 1
         # return arr[l+1:r]
         
-        # Approach 3: Binary Search To Find The Left Bound
+        # Approach 3: Binary Search To Find The Left Bound - O(log(n-k) + k)
         left, right = 0, len(arr) - k
         
         while left < right:
