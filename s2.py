@@ -1,8 +1,19 @@
+from math import comb, factorial
 
-def fibb(n):
-    if n <= 1:
-        return n
-    return fibb(n-1) + fibb(n-2)
+print(comb(5-1, 3-1))
 
-ans = fibb(10)
+# def nCr(n, r):
+#     f = factorial
+#     return f(n)//(f(r)*f(n-r))
+
+# print(nCr(5-1,3-1))
+
+
+row = 5
+ans = [1]
+prev = 1
+for col in range(1, row+1):
+    prev *= row - col + 1
+    prev //= col
+    ans.append(prev)
 print(ans)
