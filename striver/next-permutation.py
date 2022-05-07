@@ -15,17 +15,16 @@ class Solution:
             while nums[j] <= nums[i]:
                 j -= 1    
             nums[i], nums[j] = nums[j], nums[i]
-        self.reverseArr(nums, i+1, n)
+        self.reverseArr(nums, i+1, n-1)
         
         return nums
 
     def reverseArr(self, nums: List[int], start: int, end: int) -> None:
-        end -= 1
         while start < end:
             nums[start], nums[end] = nums[end], nums[start]
             start += 1
             end -= 1
 
 
-ans = Solution().nextPermutation([1,1])
+ans = Solution().nextPermutation([1,3,5,4,2])
 print(ans)

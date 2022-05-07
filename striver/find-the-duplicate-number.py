@@ -11,7 +11,7 @@ class Solution:
         # Brute Force - O(nlogn), O(1)
         # nums.sort()
         # for i in range(len(nums)):
-        #     if nums[i] == nums[i+1]:
+        #     if nums[i] == nums[i-1]:
         #         return nums[i]
         
         # Hashmap - O(n), O(n) 
@@ -35,6 +35,5 @@ class Solution:
             fast = nums[fast]
         return slow
 
-
-answer = Solution().findDuplicate([3, 1, 3, 4, 2])
+answer = Solution().findDuplicate([1, 3, 2, 3, 4] )
 print(answer)
