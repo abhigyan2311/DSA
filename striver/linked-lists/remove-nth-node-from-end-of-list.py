@@ -40,7 +40,7 @@ class Solution:
         slow = fast = dummy
         for _ in range(n):
             fast = fast.next
-        while fast.next:
+        while fast and fast.next:
             slow, fast = slow.next, fast.next
         slow.next = slow.next.next
 

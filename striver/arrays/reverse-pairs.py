@@ -12,6 +12,7 @@ class Solution:
         for i in range(len(leftArr)):
             while j < len(rightArr) and leftArr[i] > 2*rightArr[j]:
                 j += 1
+            # If the above loop satisfies then for all next i the previous j will form the reverse pairs
             counter += j
 
         i, j = 0, 0
@@ -47,5 +48,5 @@ class Solution:
     def reversePairs(self, nums: List[int]) -> int:
         return self.mergeSort(nums, 0, len(nums)-1)
 
-ans = Solution().reversePairs([1,3,2,3,1])
+ans = Solution().reversePairs([2,4,3,5,1])
 print(ans)

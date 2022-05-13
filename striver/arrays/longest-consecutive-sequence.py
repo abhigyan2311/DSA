@@ -7,12 +7,12 @@ class Solution:
         hm = Counter(nums)
         for num in nums:
             if num-1 not in hm:
-                currNum = num+1
-                currStreak = 1
-                while currNum in hm:
-                    currStreak += 1
-                    currNum += 1
-                longestStreak = max(longestStreak, currStreak)
+                currenStreak = 1
+                currentNum = num+1
+                while currentNum in hm:
+                    currenStreak += 1
+                    currentNum += 1
+                longestStreak = max(longestStreak, currenStreak)
         return longestStreak
         
 

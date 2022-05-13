@@ -2,11 +2,11 @@ from typing import List
 
 
 class Solution:
-    def maxLen(self, n: int, arr: List[int]):
+    def maxLen(self, arr: List[int]):
         hm = {}
         maxi = 0
         summ = 0
-        for ind in range(n):
+        for ind in range(len(arr)):
             summ += arr[ind]
             if summ == 0:
                 maxi = ind+1
@@ -18,5 +18,5 @@ class Solution:
                     hm[summ] = ind
         return maxi
 
-ans = Solution().maxLen(4, [-1, 1, 1, -1])
+ans = Solution().maxLen([15,-2,2,-8,1,7,10,23])
 print(ans)

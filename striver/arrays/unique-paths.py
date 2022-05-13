@@ -34,38 +34,40 @@ class Solution:
 
     # Iteration + Memoization - O(n*m), O(n*m)
     # def uniquePaths(self, m: int, n: int) -> int:
-    #     dp = [[-1] * n for _ in range(m)]
-    #     dp[0][0] = 1
-    #     for i in range(m):
-    #         for j in range(n):
-    #             if i == 0 and j == 0: dp[0][0] = 1
-    #             else:
-    #                 up, left = 0,0
-    #                 if i > 0:
-    #                     up = dp[i-1][j]
-    #                 if j > 0:
-    #                     left = dp[i][j-1]
-    #                 ways = up + left
-    #                 dp[i][j] = ways
-    #     return dp[m-1][n-1]
+        # dp = [[-1] * n for _ in range(m)]
+        # dp[0][0] = 1
+        # for i in range(m):
+        #     for j in range(n):
+        #         if i == 0 and j == 0: dp[0][0] = 1
+        #         else:
+        #             up, left = 0,0
+        #             if i > 0:
+        #                 up = dp[i-1][j]
+        #             if j > 0:
+        #                 left = dp[i][j-1]
+        #             ways = up + left
+        #             dp[i][j] = ways
+        # return dp[m-1][n-1]
     
     # Iteration + Space Optimzation - O(m*n), O(n)
     # def uniquePaths(self, m: int, n: int) -> int:
-    #     prev = [0] * n
-    #     for i in range(m):
-    #         temp = [0] * n
-    #         for j in range(n):
-    #             if i == 0 and j == 0: 
-    #                 temp[0] = 1
-    #             else:
-    #                 up, left = 0,0
-    #                 if i > 0:
-    #                     up = prev[j]
-    #                 if j > 0:
-    #                     left = temp[j-1]
-    #                 temp[j] = up + left                
-    #         prev = temp
-    #     return prev[n-1]
+        # prev = [0] * n
+        # for i in range(m):
+        #     temp = [0] * n
+        #     for j in range(n):
+        #         if i == 0 and j == 0: 
+        #             temp[0] = 1
+        #         else:
+        #             up, left = 0,0
+        #             if i > 0:
+        #                 up = prev[j]
+        #             if j > 0:
+        #                 left = temp[j-1]
+        #             temp[j] = up + left                
+        #     prev = temp
+        # return prev[n-1]
+
+
     def uniquePaths(self, m: int, n: int) -> int:
         N = m+n-2
         r = m-1

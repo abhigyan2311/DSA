@@ -24,13 +24,13 @@ class Solution:
         n = len(matrix)
         depth = n//2
         for i in range(depth):
-            rowLen, opp = n-(2*i)-1, n-1-i
+            rowLen, opp = n-1-2*i, n-1-i
             for j in range(rowLen):
-                temp = matrix[i][i+j]
+                t = matrix[i][i+j]
                 matrix[i][i+j] = matrix[opp-j][i]
                 matrix[opp-j][i] = matrix[opp][opp-j]
                 matrix[opp][opp-j] = matrix[i+j][opp]
-                matrix[i+j][opp] = temp
+                matrix[i+j][opp] = t
 
         return matrix
 

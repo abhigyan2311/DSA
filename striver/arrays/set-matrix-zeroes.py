@@ -43,18 +43,17 @@ class Solution:
         # Optimal - O(2*nm), O(1)
         col0 = False
         rows, cols = len(matrix), len(matrix[0])
-        for i in range(rows):
-            if matrix[i][0] == 0: col0 = True
-            for j in range(1, cols):
-                if matrix[i][j] == 0:
-                    matrix[0][j], matrix[i][0] = 0, 0
+        for row in range(rows):
+            if matrix[row][0] == 0: col0 = True
+            for col in range(1, cols):
+                if matrix[row][col] == 0:
+                    matrix[0][col] = matrix[row][0] = 0
         
-        for i in range(rows-1, -1, -1):
-            for j in range(cols-1, 0, -1):
-                if matrix[0][j] == 0 or matrix[i][0] == 0:
-                    matrix[i][j] = 0
-            if col0: matrix[i][0] = 0
-
+        for row in range(rows-1, -1, -1):
+            for col in range(cols-1, 0, -1):
+                if matrix[0][col] == 0 or matrix[row][0] == 0:
+                    matrix[row][col] = 0
+            if col0: matrix[row][0] = 0
         return matrix
         
 

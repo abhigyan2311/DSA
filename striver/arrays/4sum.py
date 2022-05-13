@@ -53,13 +53,11 @@ class Solution:
                             left += 1
                         while left < right and nums[right] == q4:
                             right -= 1
-                if j+1 < n and nums[j] == nums[j+1]:
-                    while j+1 < n and nums[j] == nums[j+1]:
-                        j += 1
+                while j+1 < n and nums[j] == nums[j+1]:
+                    j += 1
                 j += 1
-            if i+1 < n and nums[i] == nums[i+1]:
-                while i+1 < n and nums[i] == nums[i+1]:
-                    i += 1
+            while i+1 < n and nums[i] == nums[i+1]:
+                i += 1
             i += 1
         return ans
 
