@@ -39,6 +39,6 @@ class Solution:
                 list1 = list1.next
             temp.next = list2
             list1, list2 = list2, list1
-        return res        
+        return res
 
         
