@@ -35,16 +35,16 @@ class Solution:
 
         nums.sort()
 
-        # offlineQueries = []
-        # for i in range(n):
-        #     temp = [queries[i][0], queries[i][1], i]
-        #     offlineQueries.append(temp)
-        # offlineQueries.sort(key=lambda x:x[1])
-        offlineQueries = sorted((m, x, i) for i, (x, m) in enumerate(queries))
+        offlineQueries = []
+        for i in range(n):
+            temp = [queries[i][0], queries[i][1], i]
+            offlineQueries.append(temp)
+        offlineQueries.sort(key=lambda x:x[1])
+        
         trie = Trie()
         
         k = 0
-        for m,x,i in offlineQueries:
+        for x,m,i in offlineQueries:
             while k < len(nums) and nums[k] <= m:
                 trie.insert(nums[k])
                 k += 1
