@@ -22,7 +22,7 @@ class Solution:
 
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counter = Counter(nums)
-        freqArr = [[] for i in range(len(nums) + 1)]
+        freqArr = [[] for _ in range(len(nums) + 1)]
         
         for num, count in counter.items():
             freqArr[count].append(num)
