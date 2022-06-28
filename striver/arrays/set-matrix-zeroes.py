@@ -41,7 +41,7 @@ class Solution:
         #             matrix[row][col] = 0
 
         # Optimal - O(2*nm), O(1)
-        col0 = False
+        col0=False
         rows, cols = len(matrix), len(matrix[0])
         for row in range(rows):
             if matrix[row][0] == 0: col0 = True

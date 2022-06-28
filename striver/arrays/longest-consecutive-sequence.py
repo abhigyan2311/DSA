@@ -1,10 +1,9 @@
-from typing import Counter, List
-
+from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         longestStreak = 0
-        hm = Counter(nums)
+        hm = set(nums)
         for num in nums:
             if num-1 not in hm:
                 currenStreak = 1
@@ -15,7 +14,6 @@ class Solution:
                 longestStreak = max(longestStreak, currenStreak)
         return longestStreak
         
-
 ans = Solution().longestConsecutive([100,4,200,1,3,2])
 print(ans)
         

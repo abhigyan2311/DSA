@@ -15,4 +15,3 @@ class Solution:
             node.next = node.next.next
         else:
             node = None
-        

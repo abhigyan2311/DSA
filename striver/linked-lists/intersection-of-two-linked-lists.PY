@@ -26,8 +26,8 @@ class Solution:
     # O(2N), O(1)
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         if not headA or not headB: return None
-        
         dN1, dN2 = headA, headB
+
         while dN1 != dN2:
             dN1 = headB if not dN1 else dN1.next
             dN2 = headA if not dN2 else dN2.next

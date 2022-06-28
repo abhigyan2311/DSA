@@ -23,15 +23,16 @@ class Solution:
             kth = self.getKth(groupPrev, k)
             if not kth: break
             groupNext = kth.next
-            # Reverse Group
+            
+            #Reverse Group
             prev, curr = groupNext, groupPrev.next
             while curr != groupNext:
                 curr.next, prev, curr = prev, curr, curr.next
-            temp = groupPrev.next
-            groupPrev.next = kth
-            groupPrev = temp
-            # groupPrev.next, groupPrev = kth, groupPrev.next
+
+            # Move groupPrev to new group's previous
+            groupPrev.next, groupPrev = kth, groupPrev.next
         return dummy.next
+
 
     def getKth(self, curr: ListNode, k: int) -> ListNode:
         while curr and k > 0:
@@ -106,9 +107,9 @@ if __name__ == "__main__":
     head.next.next = ListNode(3)
     head.next.next.next = ListNode(4)
     head.next.next.next.next = ListNode(5)
-    head.next.next.next.next.next = ListNode(6)
-    head.next.next.next.next.next.next = ListNode(7)
-    head.next.next.next.next.next.next.next = ListNode(8)
+    # head.next.next.next.next.next = ListNode(6)
+    # head.next.next.next.next.next.next = ListNode(7)
+    # head.next.next.next.next.next.next.next = ListNode(8)
 
     head2 = ListNode(1)
     head2.next = ListNode(2)
@@ -136,8 +137,11 @@ if __name__ == "__main__":
     head4.next.next.next.next.next = ListNode(6)
     head4.next.next.next.next.next.next = ListNode(7)
     head4.next.next.next.next.next.next.next = ListNode(8)
+    head4.next.next.next.next.next.next.next.next = ListNode(9)
 
-    print(Solution().reverseKGroupI(head, 3))
-    print(Solution().reverseKGroupR(head2, 3))
-    print(Solution().reverseKGroupV1(head3, 3))
-    print(Solution().reverseKGroupV2(head4, 3))
+    # print(Solution().reverseKGroupI(head, 2))
+    # print(Solution().reverseKGroupR(head2, 3))
+    # print(Solution().reverseKGroupV1(head3, 3))
+    # print(Solution().reverseKGroupV2(head4, 3))
+
+    print(Solution().reverseKGroupI(head4, 3))

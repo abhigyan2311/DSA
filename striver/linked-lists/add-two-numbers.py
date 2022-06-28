@@ -25,4 +25,5 @@ class Solution:
             temp.next = node
             temp = temp.next
         return dummy.next
+
         

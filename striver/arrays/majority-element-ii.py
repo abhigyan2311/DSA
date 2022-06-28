@@ -41,8 +41,6 @@ class Solution:
             ans.append(num2)
         return ans
 
-
-
 ans = Solution().majorityElement([1,1,1,2,3,7,8,1,6,9])
 print(ans)
         

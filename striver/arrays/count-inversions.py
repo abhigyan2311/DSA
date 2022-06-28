@@ -41,12 +41,11 @@ def merge(arr: List[int], left: int, mid: int, right: int) -> int:
 def mergeSort(arr: List[int], left: int, right: int) -> int:
     if left >= right: return 0
     invCount = 0
-    mid = (left + right)//2
+    mid = (left+right)//2
     invCount += mergeSort(arr, left, mid)
     invCount += mergeSort(arr, mid+1, right)
-    invCount += merge(arr, left, mid ,right)
+    invCount += merge(arr, left, mid, right)
     return invCount
-
 
 arr = [7,6,5,4,3,2,1]
 n = len(arr)

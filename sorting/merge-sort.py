@@ -32,7 +32,6 @@ def merge(arr: List[int], left: int, mid: int, right: int) -> None:
 def mergeSort(arr: List[int], left: int, right: int):
     if left >= right:
         return
-
     mid = (left+right)//2
     mergeSort(arr, left, mid)
     mergeSort(arr, mid+1, right)

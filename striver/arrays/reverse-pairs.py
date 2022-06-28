@@ -8,12 +8,12 @@ class Solution:
         leftArr = nums[left:mid+1]
         rightArr = nums[mid+1:right+1]
 
-        j = 0
-        for i in range(len(leftArr)):
-            while j < len(rightArr) and leftArr[i] > 2*rightArr[j]:
-                j += 1
-            # If the above loop satisfies then for all next i the previous j will form the reverse pairs
-            counter += j
+        # j = 0
+        # for i in range(len(leftArr)):
+        #     while j < len(rightArr) and leftArr[i] > 2*rightArr[j]:
+        #         j += 1
+        #     # If the above loop satisfies then for all next i the previous j will form the reverse pairs
+        #     counter += j
 
         i, j = 0, 0
         k = left
@@ -23,6 +23,8 @@ class Solution:
                 i+=1
             else:
                 nums[k] = rightArr[j]
+                if leftArr[i] > 2*rightArr[j]:
+                    counter += len(rightArr) - j
                 j+=1
             k+=1
         

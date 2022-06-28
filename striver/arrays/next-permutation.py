@@ -1,6 +1,5 @@
 from typing import List
 
-
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
@@ -23,7 +22,6 @@ class Solution:
             nums[start], nums[end] = nums[end], nums[start]
             start += 1
             end -= 1
-
 
 ans = Solution().nextPermutation([1,3,5,4,2])
 print(ans)
