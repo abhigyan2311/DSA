@@ -1,35 +1,42 @@
-# [2, 4, 5, 16, 25]
+from collections import defaultdict
 
-# O(N2logN) + O(NlogN)
-def maxSetSize(riceBags):
-    # Write your code here
-    maxLen = 0
-    riceBags.sort()
-    n = len(riceBags)
-    visited = set()
-    i = 0
-    while i < n:
-        curr = riceBags[i]
-        if curr in visited:
-            i += 1
-            continue
-        currLen = 1
-        visited.add(curr)
-        target = curr*curr
-        j = i+1
-        while j < n:
-            curr = riceBags[j]
-            if curr == target:
-                currLen += 1
-                j += 1
-                target = curr*curr
-                visited.add(curr)
-            else:
-                if riceBags[j] > target: break
-                j += 1
-        i += 1
-        maxLen = max(maxLen, currLen)
-    return maxLen
 
-ans = maxSetSize([2,4,5,16,25,256,125, 3, 9, 81, 6561, 43046721])
+class Solution:
+    def __init__(self) -> None:
+        self.adj = defaultdict(list)
+        self.eulerTour = []
+        self.visited = [False]*10e4
+        self.level = [0]*10e4
+        self.indMap = {}
+    
+    def dfs(self, node: int, level=1):
+        self.visited[node] = True
+        self.eulerTour.append(node)
+        self.level[node] = level
+        for adjN in self.adj[node]:
+            if not self.visited[adjN]:
+                self.dfs(adjN, level+1)
+        self.eulerTour.append(node)
+
+    
+    def solve(self, N, Q, Edge, query):
+        # Construct the graph
+        for ed in Edge:
+            self.adj[ed[0]].append(ed[1])
+            self.adj[ed[1]].append(ed[0])
+        
+        # DFS
+        self.dfs(0)
+        
+        # Compute start and end indexes of euler tour
+        for node in self.eulerTour:
+            if inde
+        
+
+N = 2
+Q = 2
+edge = [[0, 1], [0, 2], [1, 3], [1, 4]]
+query = [[0, 1], [1, 4]]
+
+ans = Solution().solve(N, Q, edge, query)
 print(ans)
