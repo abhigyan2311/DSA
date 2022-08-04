@@ -39,20 +39,14 @@ class Solution:
             nXor ^= num
         rsb = nXor & -nXor
         for num in arr:
-            if num & rsb:
-                x ^= num
-            else:
-                y ^= num
+            if num & rsb: x ^= num
+            else: y ^= num
         for i in range(1, n+1):
-            if i & rsb:
-                x ^= i
-            else:
-                y ^= i
-        # Check if the result is inverted as it does not guarantee x will be missing and y repeating
+            if i & rsb: x ^= i
+            else: y ^= i
         for num in arr:
-            if x == num:
-                return y, x
-                
+            if num == x:
+                return y,x
         return x, y
 
 ans = Solution().missingAndRepeating([4,3,6,2,1,1], 6)

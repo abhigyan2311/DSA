@@ -1,13 +1,13 @@
 from typing import List
 
 # Brute Force - O(N^2), O(1)
-def getInversions(arr, n):
-    counter = 0
-    for i in range(n):
-        for j in range(i+1, n):
-            if arr[i] > arr[j]:
-                counter += 1
-    return counter
+# def getInversions(arr, n):
+#     counter = 0
+#     for i in range(n):
+#         for j in range(i+1, n):
+#             if arr[i] > arr[j]:
+#                 counter += 1
+#     return counter
 
 # Merge Sort - O(NlogN), O(N)
 def merge(arr: List[int], left: int, mid: int, right: int) -> int:
@@ -47,8 +47,7 @@ def mergeSort(arr: List[int], left: int, right: int) -> int:
     invCount += merge(arr, left, mid, right)
     return invCount
 
-arr = [7,6,5,4,3,2,1]
+arr = [2, 5, 1, 3, 4]
 n = len(arr)
-print(getInversions(arr, n))
 ans = mergeSort(arr, 0, n - 1)
 print(ans)

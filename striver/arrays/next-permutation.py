@@ -23,5 +23,5 @@ class Solution:
             start += 1
             end -= 1
 
-ans = Solution().nextPermutation([1,3,5,4,2])
+ans = Solution().nextPermutation([1, 1])
 print(ans)

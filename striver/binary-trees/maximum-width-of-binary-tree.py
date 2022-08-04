@@ -14,7 +14,7 @@ class Solution:
         maxWidth = 0
         treeQ = deque()
         treeQ.append((root, 0))
-        while len(treeQ) > 0:
+        while treeQ:
             levelMin = treeQ[0][1]
             treeQSize = len(treeQ)
             firstInd, lastInd = 0, 0

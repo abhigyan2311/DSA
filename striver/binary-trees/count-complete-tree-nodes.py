@@ -31,11 +31,24 @@ class Solution:
         if nodeL.left or nodeR.right: return -1
         return count
     
+    def findLeftHeight(self, node):
+        height = 0
+        while node:
+            height += 1
+            node = node.left
+        return height
+
+    def findRightHeight(self, node):
+        height = 0
+        while node:
+            height += 1
+            node = node.right
+        return height
+
     def countNodes(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
-        height = self.getHeight(root)
-        
-        if height != -1: 
-            return (pow(2, height+1) - 1)
-        else:
-            return self.countNodes(root.left) + self.countNodes(root.right) + 1
+        leftHeight = self.findLeftHeight(root)
+        rightHeight = self.findRightHeight(root)
+        if leftHeight == rightHeight:
+            return pow(2, leftHeight) - 1
+        return 1 + self.countNodes(root.left) + self.countNodes(root.right)

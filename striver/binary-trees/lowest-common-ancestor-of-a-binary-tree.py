@@ -17,7 +17,7 @@ class Solution:
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
-         # if both targets found, combine into LCA & return
+        # if both targets found, combine into LCA & return
         if left and right:
             return root
 

@@ -1,42 +1,36 @@
-from collections import defaultdict
-
+from collections import deque
+from math import inf
+from typing import List
 
 class Solution:
-    def __init__(self) -> None:
-        self.adj = defaultdict(list)
-        self.eulerTour = []
-        self.visited = [False]*10e4
-        self.level = [0]*10e4
-        self.indMap = {}
-    
-    def dfs(self, node: int, level=1):
-        self.visited[node] = True
-        self.eulerTour.append(node)
-        self.level[node] = level
-        for adjN in self.adj[node]:
-            if not self.visited[adjN]:
-                self.dfs(adjN, level+1)
-        self.eulerTour.append(node)
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        if not grid: return 0
+        rotten = deque()
+        freshOranges = 0
+        minPassed = 0
 
-    
-    def solve(self, N, Q, Edge, query):
-        # Construct the graph
-        for ed in Edge:
-            self.adj[ed[0]].append(ed[1])
-            self.adj[ed[1]].append(ed[0])
-        
-        # DFS
-        self.dfs(0)
-        
-        # Compute start and end indexes of euler tour
-        for node in self.eulerTour:
-            if inde
-        
+        rows, cols = len(grid), len(grid[0])
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == 1: freshOranges += 1
+                elif grid[row][col] == 2: rotten.append((row, col))
 
-N = 2
-Q = 2
-edge = [[0, 1], [0, 2], [1, 3], [1, 4]]
-query = [[0, 1], [1, 4]]
+        directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        while rotten and freshOranges > 0:
+            minPassed += 1
+            for _ in range(len(rotten)):
+                x, y = rotten.popleft()
+                for dx, dy in directions:
+                    xx, yy = x+dx, y+dy
+                    if xx not in range(rows) and yy not in range(cols): continue
+                    if grid[xx][yy]==0 or grid[xx][yy]==2: continue
+                    grid[xx][yy] = 2
+                    rotten.append((xx,yy))
+                    freshOranges -= 1
+        return minPassed if freshOranges == 0 else -1
 
-ans = Solution().solve(N, Q, edge, query)
+
+
+ans = Solution().orangesRotting([[2,1,1],[0,1,1],[1,0,1]])
+# [-1, 4, -1, 2, 2]
 print(ans)
