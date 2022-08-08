@@ -20,9 +20,6 @@ class Solution:
         numbers = list(range(1, n+1))
         self.solve([], numbers, permutations)
         return permutations[k-1]
-
-
-        [1,2,3]
         
         # Approach 2: Mathematically - O(n^2), O(n)
         # numbers = list(range(1, n+1))
