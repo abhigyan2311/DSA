@@ -43,20 +43,26 @@ class Solution:
         return totalWater
 
         # Optimal - O(N), O(1)
-        # n = len(height)
-        # left, right = 0, n-1
-        # leftMax, rightMax = 0, 0
-        # totalWater = 0
-        # while left <= right:
-        #     if height[left]<=height[right]:
-        #         if height[left]>=leftMax:   leftMax = height[left]
-        #         else:   totalWater += leftMax - height[left]
-        #         left += 1
-        #     else:
-        #         if height[right]>=rightMax: rightMax = height[right]
-        #         else:   totalWater += rightMax - height[right]
-        #         right -= 1
-        # return totalWater
+        n = len(height)
+        leftMax, rightMax = height[0], height[-1]
+        left, right = 1, n-2
+        totalWater = 0
+        while left <= right:
+            if leftMax < rightMax:
+                if leftMax < height[left]:
+                    leftMax = height[left]
+                else:
+                    totalWater += leftMax - height[left]
+                left+=1
+            else:
+                if rightMax < height[right]:
+                    rightMax = height[right]
+                else:
+                    totalWater += rightMax - height[right]
+                right -= 1
+        return totalWater
+
+        
 ans = Solution().trap([0,1,0,2,1,0,1,3,2,1,2,1])
 print(ans)
         

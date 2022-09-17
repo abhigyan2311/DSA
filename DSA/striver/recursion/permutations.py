@@ -22,6 +22,24 @@ class Solution:
     #     self.recFindPerm([], hm, nums, ans)    
     #     return ans
 
+
+#     def f(self, num: List[int], nums: List[int], ans: List[List[int]]):
+#         if len(nums) == 0:
+#             ans.append(num[:])
+#             return
+#         for i in range(len(nums)):
+#             pick = nums[i]
+#             num.append(pick)
+#             nums.pop(i)
+#             self.f(num, nums, ans)
+#             num.pop()
+#             nums.insert(i, pick)
+
+#     def permute(self, nums: List[int]) -> List[List[int]]:
+#         ans = []
+#         self.f([], nums, ans)
+#         return ans
+
     # Approach 2 - O(n! * n), O(n)
     def recFindPerm(self, index: int, nums: List[int], ans: List[List[int]]):
         if index == len(nums):

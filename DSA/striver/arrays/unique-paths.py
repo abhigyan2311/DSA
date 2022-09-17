@@ -1,7 +1,6 @@
 # https://leetcode.com/problems/unique-paths/
 # https://youtu.be/sdE0A2Oxofw
 
-from cgitb import reset
 from math import comb
 from typing import List
 
