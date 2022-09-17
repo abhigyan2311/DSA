@@ -11,7 +11,7 @@ class Solution:
         
         # Binary Search - O(logN), O(1)
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        lo, hi = 0, len(nums) - 2
+        lo, hi = 0, len(nums) - 2 # If single element is on last index, so search space will be minus last index
         while lo <= hi:
             mid = (lo+hi)//2
             if mid%2 != 0:
@@ -24,6 +24,10 @@ class Solution:
                     lo = mid+1
                 else:
                     hi = mid-1
+            # if nums[mid] == nums[mid^1]:
+            #     lo = mid+1
+            # else:
+            #     hi = mid-1
         return lo
 
 ans = Solution().singleNonDuplicate([3,3,7,7,10,11,11])
