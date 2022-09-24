@@ -9,6 +9,7 @@ class TreeNode:
         self.right = right
         
 class Solution:
+    # Recursive - O(N), O(N)
     def postorder(self, curr: Optional[TreeNode], ans: List[int]):
         if not curr: return
         self.postorder(curr.left, ans)
@@ -19,6 +20,8 @@ class Solution:
         ans = []
         self.postorder(root, ans)
         return ans
+
+    # Iterative - 2 Stacks - O(N), O(2N)
     # def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
     #     ans = []
     #     if not root: return ans
@@ -33,7 +36,7 @@ class Solution:
     #         ans.append(st2.pop().val)
     #     return ans
     
-    # LEFT RIGHT ROOT
+    # Iterative - 1 Stack - O(2N), O(N)
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
         if not root: return ans

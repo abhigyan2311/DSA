@@ -7,10 +7,13 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-        
+
+
 class Solution:
+    # Recursive
     def preorder(self, root: Optional[TreeNode], res: List[int]):
-        if not root: return
+        if not root:
+            return
         res.append(root.val)
         self.preorder(root.left)
         self.preorder(root.right)
@@ -20,16 +23,18 @@ class Solution:
         self.preorder(root, res)
         return res
 
+    # Iterative
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
-        if not root: return ans
+        if not root:
+            return ans
         st = []
         st.append(root)
         while st:
             root = st.pop()
             ans.append(root.val)
-            if root.right: st.append(root.right)
-            if root.left: st.append(root.left)
+            if root.right:
+                st.append(root.right)
+            if root.left:
+                st.append(root.left)
         return ans
-
-

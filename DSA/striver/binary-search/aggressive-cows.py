@@ -21,17 +21,18 @@ class Solution:
 
     # Optimal - O(NLogN), O(1)
     def canPlace(self, dist, stalls, cows):
-        lastCow = stalls[0]
-        count = 1
-        for i in range(len(stalls)):
-            if stalls[i] - lastCow >= dist:
-                lastCow = stalls[i]
-                count += 1
-        if count >= cows: return True
+        lastCowStall = stalls[0]
+        cowsPlaced = 1
+        for currentStall in stalls:
+            if currentStall - lastCowStall >= dist:
+                lastCowStall = currentStall
+                cowsPlaced += 1
+        if cowsPlaced >= cows: return True
         return False
             
 
     def aggCows(self, stalls, cows):
+        # Check for every distance from 1 till failure => 1, 2, 3, .... (Monotonic Function)
         stalls.sort()
         lo, hi = 1, stalls[-1]-stalls[0]
         res = -1

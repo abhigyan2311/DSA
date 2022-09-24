@@ -1,80 +1,57 @@
 import collections
 from typing import List
 
-
 class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid: return 0
+    def __init__(self) -> None:
+        self.directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
-        rows, cols = len(grid), len(grid[0])
-        visit = set()
-        islands = 0
+    # DFS
+    # def explore(self, row, col, grid, visited):
+    #     if row not in range(len(grid)) or col not in range(len(grid[0])):
+    #         return
+    #     if (row, col) in visited or grid[row][col] == "0":
+    #         return
 
-        def bfs(r, c):
-            q = collections.deque()
-            q.append((r,c))
-            visit.add((r,c))
-
-            while q:
-                row, col = q.popleft()
-                directions = [[0,-1], [-1,0], [0,1], [1,0]]
-                for dr, dc in directions:
-                    r, c = row+dr, col+dc
-                    if r in range(rows) and c in range(cols) and (r, c) not in visit and grid[r][c] == "1":
-                        q.append((r, c))
-                        visit.add((r,c))
-
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == "1" and (r,c) not in visit:
-                    bfs(r,c)
-                    islands += 1
-        
-        return islands
-
-    def numIslands(self, grid: List[List[str]]) -> int:
-        if not grid: return 0
-
-        rows, cols = len(grid), len(grid[0])
-        visit = set()
-        islands = 0
-
-        directions = [[0,-1], [-1,0], [0,1], [1,0]]
-
-        def dfs(r, c):
-            if r not in range(rows) or c not in range(cols) or grid[r][c] != "1" or (r,c) in visit: return
-            visit.add((r, c))
-            for dr, dc in directions:
-                dfs(r+dr, c+dc)
-
-        for r in range(rows):
-            for c in range(cols):
-                if (r,c) not in visit and grid[r][c] == "1":
-                    dfs(r,c)
-                    islands += 1
-        return islands
+    #     visited.add((row, col))
+    #     for dx, dy in self.directions:
+    #         self.explore(row+dx, col+dy, grid, visited)
 
     # def numIslands(self, grid: List[List[str]]) -> int:
-    #     if not grid: return 0
-    #     r, c = len(grid), len(grid[0])
-    #     visited = [[False for _ in range(c)] for _ in range(r)]
+    #     rows, cols = len(grid), len(grid[0])
+    #     visited = set()
+    #     islands = 0
 
-    #     def dfs(i, j):
-    #         if i < 0 or i >= r or j < 0 or j >= c or grid[i][j] == '0' or visited[i][j]:
-    #             return
-    #         visited[i][j] = True
-    #         dfs(i + 1, j)
-    #         dfs(i - 1, j)
-    #         dfs(i, j + 1)
-    #         dfs(i, j - 1)
+    #     for row in range(rows):
+    #         for col in range(cols):
+    #             if grid[row][col] == "1" and (row, col) not in visited:
+    #                 self.explore(row, col, grid, visited)
+    #                 islands += 1
+    #     return islands
 
-    #     count = 0
-    #     for i in range(r):
-    #         for j in range(c):
-    #             if not visited[i][j] and grid[i][j] == '1':
-    #                 dfs(i, j)
-    #                 count += 1
-    #     return count
+    # BFS
+    def explore(self, row, col, grid, visited):
+        dq = collections.deque()
+        dq.append((row, col))
+        visited.add((row, col))
+        while dq:
+            currRow, currCol = dq.popleft()
+            for dx, dy in self.directions:
+                newRow, newCol = currRow+dx, currCol+dy
+                if newRow in range(len(grid)) and newCol in range(len(grid[0])) and (newRow, newCol) not in visited and grid[newRow][newCol] == "1":
+                    dq.append((newRow, newCol))
+                    visited.add((newRow, newCol))
+
+    def numIslands(self, grid: List[List[str]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        visited = set()
+        islands = 0
+
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == "1" and (row, col) not in visited:
+                    self.explore(row, col, grid, visited)
+                    islands += 1
+        return islands
 
 grid = [
   ["1","1","1","1","0"],

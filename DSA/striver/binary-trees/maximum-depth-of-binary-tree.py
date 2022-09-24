@@ -1,4 +1,5 @@
 # Definition for a binary tree node.
+from collections import deque
 from queue import Queue
 from typing import Optional
 
@@ -13,15 +14,15 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         maxDepth = 0
         if not root: return maxDepth
-        treeQ = Queue()
-        treeQ.put((root, 0))
+        treeQ = deque()
+        treeQ.append((root, 0))
         while treeQ.qsize()>0:
-            currNode, level = treeQ.get()
+            currNode, level = treeQ.popleft()
             maxDepth = max(maxDepth, level)
             if currNode.left:
-                treeQ.put((currNode.left, level+1))
+                treeQ.append((currNode.left, level+1))
             if currNode.right:
-                treeQ.put((currNode.right, level+1))
+                treeQ.append((currNode.right, level+1))
         return maxDepth+1
     
     # Recursive - O(N), O(H)

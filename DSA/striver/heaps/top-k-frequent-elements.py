@@ -10,6 +10,8 @@ class Solution:
     #     for e in c:
     #         res.append(e[0])
     #     return res
+
+    # TC - Nlogk, SC - O(N)
     # def topKFrequent(self, nums: List[int], k: int) -> List[int]:
     #     c = Counter(nums)
     #     hp = []
@@ -23,16 +25,18 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counter = Counter(nums)
         freqArr = [[] for _ in range(len(nums) + 1)]
-        
+
         for num, count in counter.items():
             freqArr[count].append(num)
-        
+
         res = []
         for i in range(len(freqArr)-1, 0, -1):
             for el in freqArr[i]:
                 res.append(el)
-            if len(res) == k: break
+            if len(res) == k:
+                break
         return res
 
-ans = Solution().topKFrequent([1,1,1,2,2,3], 2)
+
+ans = Solution().topKFrequent([1, 1, 1, 2, 2, 3], 2)
 print(ans)

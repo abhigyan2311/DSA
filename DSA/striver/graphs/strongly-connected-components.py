@@ -17,7 +17,7 @@ class Solution:
         adj = [[] for _ in range(n)]
         for edge in edges:
             adj[edge[0]].append(edge[1])
-        #Step 1: Sort all nodes in topological sorted way
+        #Step 1: Sort all nodes in topological sorted way(in order of finishing time)
         visited = set()
         st = []
         for i in range(n):

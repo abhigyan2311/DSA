@@ -1,5 +1,6 @@
-from queue import Queue
+from collections import deque
 from typing import List, Optional
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -7,28 +8,32 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def spiralLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         levelorder = []
-        if not root: return levelorder
-        q = Queue()
-        q.put(root)
+        if not root:
+            return levelorder
+        q = deque()
+        q.append(root)
         spiralFlag = True
-        while not q.empty():
-            size = q.qsize()
+        while q:
             level = []
-            for _ in range(size):
-                node = q.get()
-                if node.left: q.put(node.left)
-                if node.right: q.put(node.right)
+            for _ in range(len(q)):
+                node = q.popleft()
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
                 level.append(node.val)
             if spiralFlag:
                 levelorder.append(level)
             else:
                 levelorder.append(level[::-1])
             spiralFlag = not spiralFlag
-            
+
         return levelorder
+
 
 root = TreeNode(3)
 root.left = TreeNode(9)
@@ -38,5 +43,5 @@ root.right = TreeNode(20)
 root.right.left = TreeNode(15)
 root.right.right = TreeNode(7)
 
-ans = Solution().levelOrder(root)
+ans = Solution().spiralLevelOrder(root)
 print(ans)

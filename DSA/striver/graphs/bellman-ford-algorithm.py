@@ -2,7 +2,7 @@ from math import inf
 
 class Solution:
     def bellman_ford(self, V, adj, S):
-        distTo = [100000000] * V
+        distTo = [inf] * V
         distTo[S] = 0
 
         for _ in range(V-1):

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Solution:
     def dfs(self, node, visited, st, adj):
         visited[node] = True
@@ -19,22 +20,27 @@ class Solution:
     def topoSort(self, V, adj):
         topo = []
         indegree = [0]*V
+
+        # Calculate indegrees of all vertices
         for i in range(V):
             for adjN in adj[i]:
                 indegree[adjN] += 1
-        
+
+        # Add all vertices with indegree of 0 to the q
         q = deque()
         for i in range(V):
             if indegree[i] == 0:
                 q.append(i)
-        
-        while len(q) > 0:
+
+        while q:
             node = q.popleft()
             topo.append(node)
             for adjN in adj[node]:
                 indegree[adjN] -= 1
-                if indegree[adjN] == 0: q.append(adjN)
+                if indegree[adjN] == 0:
+                    q.append(adjN)
         return topo
+
 
 adj = [[], [0], [0], [0]]
 ans = Solution().topoSort(4, adj)

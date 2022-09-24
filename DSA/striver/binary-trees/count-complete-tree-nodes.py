@@ -8,29 +8,21 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
-    def getHeight(self, node) -> int:
-        # countL = countR = 0
-        # leftST = node.left
-        # rightST = node.right
-        # while leftST:
-        #     countL += 1
-        #     leftST = leftST.left
-        # while rightST:
-        #     countR += 1
-        #     rightST = rightST.right
-        # return countL, countR  
 
-        count = 0
-        nodeL = node
-        nodeR = node
-        while nodeL.left and nodeR.right:
-            count += 1
-            nodeL = nodeL.left
-            nodeR = nodeR.right
-        if nodeL.left or nodeR.right: return -1
-        return count
-    
+class Solution:
+    # Brute - O(N), O(logN)
+    # def count(self, root) -> int:
+    #         if root is None:
+    #             return 0
+    #         left = self.count(root.left)
+    #         right = self.count(root.right)
+    #         return left+right+1
+
+    #     def countNodes(self, root: Optional[TreeNode]) -> int:
+    #         return self.count(root)
+
+    # Optimal - O(logN**2), O(logN)
+    # If LH == RH then number of nodes in a complete BT is (2**(H) - 1)
     def findLeftHeight(self, node):
         height = 0
         while node:
@@ -46,7 +38,8 @@ class Solution:
         return height
 
     def countNodes(self, root: Optional[TreeNode]) -> int:
-        if not root: return 0
+        if not root:
+            return 0
         leftHeight = self.findLeftHeight(root)
         rightHeight = self.findRightHeight(root)
         if leftHeight == rightHeight:

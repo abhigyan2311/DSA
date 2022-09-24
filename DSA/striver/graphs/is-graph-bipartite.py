@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 from typing import List
 
 class Solution:
@@ -7,7 +7,7 @@ class Solution:
         color = [-1] * n
 
         def bfs(i):
-            q = collections.deque()
+            q = deque()
             q.append(i)
             color[i] = 1
 

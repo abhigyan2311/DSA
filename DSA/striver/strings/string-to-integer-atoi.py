@@ -1,7 +1,7 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
-        MAX_NUM = 2 ** 31 - 1
-        MIN_NUM = -2 ** 31
+        MAX_INT = 2 ** 31 - 1
+        MIN_INT = -2 ** 31
 
         s = s.strip()
         sign = 1
@@ -16,9 +16,10 @@ class Solution:
             i += 1
 
         while i<len(s) and s[i].isdigit():
+            # Can use int(s[i]) if allowed
             currDigit = ord(s[i]) - ord('0')
-            if num > MAX_NUM//10 or (num == MAX_NUM//10 and currDigit > 7):
-                return MAX_NUM if sign==1 else MIN_NUM
+            if num > MAX_INT//10 or (num == MAX_INT//10 and currDigit > 7):
+                return MAX_INT if sign==1 else MIN_INT
             num = num*10 + currDigit
             i += 1
 

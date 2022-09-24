@@ -6,19 +6,14 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         dq = deque()
         ans = []
-        for i in range(nums):
-            # If sliding window is ahead of current el in dq
+        for i in range(len(nums)):
+            # When sliding windows, remove the element out of the window of the start
             if dq and dq[0] == i-k:
                 dq.popleft()
-
-            # If dq is not maintained in decreasing order
+            # Making sure deque is maintained in an increasing order
             while dq and nums[dq[-1]] <= nums[i]:
                 dq.pop()
-
-            # Append current index in dq
             dq.append(i)
-
-            # Add to ans
             if i >= k-1:
                 ans.append(nums[dq[0]])
         return ans
